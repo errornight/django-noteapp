@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ user.name }} {% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/aboutus.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h3> Hello {{ user.name }} </h3>
+        <img src="{{ user.profile.url }}" width="200px" height="200px">
+        <h4> Username: @{{ user }} </h4>
+
+    {% for note in notes %}
+        <br><hr>
+          <div class="container">
+            <div class="card">
+                <a href="{% url 'NotePage' note.owner.username note.uuid %}">
+              <div class="title"> {{ note.title  }} </div>
+                    </a>
+              <div class="description">{{ note.short_desc}}</div>
+              <div class="category">
+                <div class="category-tag" style="color: {{ note.category.color }}">{{ note.category.title }}</div>
+              </div>
+              <div class="buttons">
+                        <a href="{% url 'EditNotePage' note.owner note.uuid %}">
+                            <button class="button">Edit</button>
+                        </a>
+                        <a href="{% url 'DeleteNote' note.owner note.uuid %}">
+                            <button class="button">Delete</button>
+                        </a>
+              </div>
+            </div>
+          </div>
+
+    {% endfor %}
+
+        <br><hr>
+        <a class="btn" href="{% url 'EditProfilePage' %}" > Edit Profile </a>
+        <a class="btn" href="{% url 'LogoutPage' %}" > Logout </a>
+
+
+    </div>
+{% endblock %}

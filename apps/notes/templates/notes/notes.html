@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Your notes {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/notes.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+{% endblock %}
+
+
+{% block content %}
+        <h1 style="color: #2f2f2f; text-align: center;"> Your notes:  </h1>
+    <br>
+    {% for note in notes %}
+
+          <div class="container">
+            <div class="card">
+                <a href="{% url 'NotePage' note.owner.username note.uuid %}">
+              <div class="title"> {{ note.title  }} </div>
+                    </a>
+              <div class="description">{{ note.short_desc}}</div>
+              <div class="category">
+                <div class="category-icon" style="color: {{ note.category.color }}"> <span class="material-symbols-rounded"> {{ note.category.icon }} </span> </div>
+                <div class="category-tag" style="color: {{ note.category.color }}">{{ note.category.title }}</div>
+              </div>
+              <div class="buttons">
+                        <a href="{% url 'EditNotePage' note.owner note.uuid %}">
+                            <button class="button">Edit</button>
+                        </a>
+                        <a href="{% url 'DeleteNote' note.owner note.uuid %}">
+                            <button class="button">Delete</button>
+                        </a>
+              </div>
+            </div>
+          </div>
+
+    {% endfor %}
+
+
+	<a href="{% url 'AddNote' %}" class="floating-btn">
+        <span class="material-symbols-rounded"> add </span>
+	</a>
+{% endblock %}

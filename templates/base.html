@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+    	<header>
+		<div class="container">
+			<div class="header-content">
+				<div class="logo">
+					<h1>NoteKeep</h1>
+				</div>
+				<nav>
+                            <ul>
+                            <li><a href="{% url 'HomePage' %}">Home</a></li>
+                            <li><a href="{% url 'NotesPage' %}">Notes</a></li>
+                            <li><a href="{% url 'About-usPage' %}">About Us</a></li>
+                            </ul>
+
+				</nav>
+                {% if request.user.is_authenticated %}
+                    <div class="user"> Logged in as <a class="btn" href="{% url 'DashboardPage' %}"> {{ request.user.name }} </a> </div>
+                {% else %}
+				<div class="user">
+					<a href="{% url 'SignupPage' %}" class="btn">Signup</a>
+					<a href="{% url 'LoginPage' %}" class="btn">Login</a>
+				</div>
+                {% endif %}
+			</div>
+		</div>
+	</header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Signup to NoteKeep {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/aboutus.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1> Join NoteKeep! </h1>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+          <a href="{% url 'LoginPage' %}" class="btn"> You are already NoteKeep's user? </a>
+      </form>
+
+    </div>
+{% endblock %}

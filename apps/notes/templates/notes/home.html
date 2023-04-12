@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Welcome to NoteKeep {% endblock %}
+
+
+{% block content %}
+        <div>
+        <div class="hero">
+          <h2 class="hero-title">Never forget a note again</h2>
+          <p class="hero-description">NoteKeep is the easiest way to keep track of your notes, reminders, and to-do lists. With NoteKeep, you can:</p>
+          <ul class="hero-list">
+            <li>Organize notes by category and color</li>
+            <li>Set reminders and due dates</li>
+            <li>Collaborate with others on notes and lists</li>
+            <li>Access your notes from anywhere, on any device</li>
+          </ul>
+          <a href="{% url 'SignupPage' %}" class="hero-btn">Get started</a>
+        </div>
+
+      <div class="container">
+            <div class="main-content">
+            <h2 class="main-title">How it works</h2>
+            <p class="main-description">NoteKeep is designed to be simple and easy to use. Here's how it works:</p>
+            <ol class="main-list">
+                <li>Create an account or log in to your existing account</li>
+                <li>Create a new note or list, or import an existing one</li>
+                <li>Organize your notes by category and color</li>
+                <li>Set reminders and due dates for important notes</li>
+                <li>Collaborate with others on shared notes and lists</li>
+                <li>Access your notes from anywhere, on any device</li>
+            </ol>
+            </div>
+
+            <div class="features">
+            <h2 class="features-title">Features</h2>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Organize notes by category and color</li>
+                <li><i class="fas fa-check"></i> Set reminders and due dates</li>
+                <li><i class="fas fa-check"></i> Collaborate with others on notes and lists</li>
+                <li><i class="fas fa-check"></i> Access your notes from anywhere, on any device</li>
+            </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="call-to-action">
+        <h2 class="call-to-action-title">Ready to get started?</h2>
+        <a href="{% url 'SignupPage' %}" class="call-to-action-btn">Sign up now</a>
+      </div>
+{% endblock %}s

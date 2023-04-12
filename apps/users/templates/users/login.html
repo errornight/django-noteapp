@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Login to NoteKeep {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/aboutus.css' %}">
+{% endblock %}
+
+{% block content %}s
+    <div class="container">
+        <h1> Welcome back! </h1>
+
+        {% if message %}
+            <h3 style="color:red"> {{ message }} </h3>
+        {% endif %}
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+          <a href="{% url 'SignupPage' %}" class="btn"> You are new user? </a>
+      </form>
+    </div>
+{% endblock %}

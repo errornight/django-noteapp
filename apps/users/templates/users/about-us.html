@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About NoteKeep {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/aboutus.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if message %}
+            <h2 style="background-color: #006b1b; padding: 20px; color: white"> {{ message }} </h2>
+        {% endif %}
+
+        <h1 style="margin-top: 30px;">About NoteKeep</h1>
+
+        <div class="content">
+        <p>NoteKeep is a note-taking application designed to help you stay organized and remember important information. With NoteKeep, you can easily create and organize notes, set reminders and due dates, and collaborate with others on notes and lists. NoteKeep is available on all devices, so you can access your notes wherever you go.</p>
+        <h2>Contact Us</h2>
+
+        <form action="#" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+{#            <label for="name">Name</label>#}
+{#            <input type="text" id="name" name="name" required>#}
+{#            <label for="email">Email</label>#}
+{#            <input type="email" id="email" name="email" required>#}
+{#            <label for="subject">Subject</label>#}
+{#            <input type="text" id="subject" name="subject" required>#}
+{#            <label for="message">Message</label>#}
+{#            <textarea id="message" name="message" rows="5" required></textarea>#}
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+
+    </div>
+{% endblock %}

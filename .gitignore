@@ -1,0 +1,10 @@
+database.sqlite3
+rush/
+.idea/
+media/*/*
+templates/static/admin
+*.log
+*.pot
+*.pyc
+__pycache__/
+apps/*/migrations/
