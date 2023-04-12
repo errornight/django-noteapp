@@ -7,4 +7,4 @@ templates/static/admin
 *.pot
 *.pyc
 __pycache__/
-apps/*/migrations/
+apps/*/migrations/0*
