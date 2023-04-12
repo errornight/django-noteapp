@@ -1,5 +1,5 @@
 # Django NoteAPP
-A simple note app developed with django.
+A simple note app developed with [django](https://www.djangoproject.com/).
 
 <br>
 
