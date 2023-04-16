@@ -1,6 +1,6 @@
 # Django NoteAPP
 A simple note app developed with [django](https://www.djangoproject.com/).<br>
-:fire: [**NEW-UPDATE:** Connected to Firebase storage for storing profile images.](# Django NoteAPP)
+:fire: **NEW-UPDATE:** [Connected to Firebase storage for storing profile images.](# Django NoteAPP)
 
 <br>
 
