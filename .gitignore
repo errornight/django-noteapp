@@ -8,3 +8,5 @@ templates/static/admin
 *.pyc
 __pycache__/
 apps/*/migrations/0*
+media/
+private_*

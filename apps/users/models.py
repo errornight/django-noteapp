@@ -5,11 +5,11 @@ from django.contrib.auth.models import AbstractUser
 
 def profile_name(instance, filename):
     # This function is to generate random names for each profile image.
-    return f'profile/{instance.username}-{"".join([str(random.randint(0, 9)) for _ in range(8)])}.{os.path.splitext(filename)[1]}'
+    return f'{instance.username}-{"".join([str(random.randint(0, 9)) for _ in range(8)])}.{os.path.splitext(filename)[1]}'
 
 class User(AbstractUser):
     name = models.CharField(max_length=120, verbose_name='FullName')
-    profile = models.ImageField(upload_to=profile_name, default='profile/Default.png',)
+    profile = models.ImageField(upload_to=profile_name, default='Default.png',)
 
     REQUIRED_FIELDS = ['name']
 
