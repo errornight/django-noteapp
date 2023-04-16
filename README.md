@@ -1,5 +1,6 @@
 # Django NoteAPP
-A simple note app developed with [django](https://www.djangoproject.com/).
+A simple note app developed with [django](https://www.djangoproject.com/).<br>
+:fire: **NEW-UPDATE:** Connected to Firebase storage for storing profile images.
 
 <br>
 
@@ -61,6 +62,37 @@ Now open your browser and go to [127.0.0.1:8000](http://127.0.0.1:8000)
 
 <br>
 
+
+# Firebase storage
+:red_circle: **Select 'add-firebase' then clone the project!** <br>
+I added this only for training.<br>
+Also it is really basic.(REMEMBER JUST FOR EDUCATION.)<br>
+I used [pyrebase](https://github.com/thisbejim/Pyrebase).<br>
+## 1. First join Firebase
+Create account and project in Firebase, Then add an app and make sure to copy the following data while adding it.
++ apiKey
++ apiKey
++ projectId
++ storageBucket
++ messagingSenderId
++ appId
++ measurementId<br>
+
+Then create a storage.
+## 2. Connect to your project.
+In **apps/users/** create a file **private_firebase.py** and write the following data there:
+```python
+apiKey = "<apiKey>"
+authDomain = "<authDomain>"
+projectId = "<projectId>"
+storageBucket = "<storageBucket>"
+messagingSenderId = "<messagingSenderId>"
+appId = "<appId>"
+measurementId = "<measurementId>"
+```
+<br>
+
+**Now you are good to go!**
+
 # Feedback
 If you have any suggestions please email them to me!<br>
-Here: night.error.go@gmail.com
