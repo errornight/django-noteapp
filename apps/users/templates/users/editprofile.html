@@ -13,6 +13,9 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+          {% if request.user.profile %}
+          <h5> Your current profile: <a href="{{ request.user.profile }}"> VIEW </a> </h5>
+          {% endif %}
         <input type="submit" value="Submit">
           <a href="{% url 'DashboardPage' %}" class="btn"> Go back </a>
       </form>

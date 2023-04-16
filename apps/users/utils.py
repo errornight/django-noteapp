@@ -1,7 +1,9 @@
-from private_firebase import *
+from .private_firebase import *
 import pyrebase
 import random
 import os
+from django.core.files.storage import default_storage  # to control our default storage
+
 
 config = {
     "apiKey": apiKey,
@@ -32,3 +34,15 @@ class Firebase:
         url = self.storage.child(filename).get_url(token)
         return url
 
+    def profile_method(self, request, default_storage_path='media/'):
+        """
+        This function save's the image, upload it, delete it from default storage and the return's file url.
+        I wrote it just to prevent writing same code in all views.
+        """
+        file = request.FILES['profile']
+        default_storage.save(file.name, file)   # save the image to our media directory
+        filename, file_token = self.upload(file.name, default_storage_path + file.name)  # upload the file to Firebase
+        file_url = self.get_url(filename, file_token)
+        default_storage.delete(file.name)
+
+        return file_url
