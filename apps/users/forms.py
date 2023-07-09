@@ -4,9 +4,11 @@ from .models import User, Ticket
 
 
 class UserSignup(UserCreationForm):
+    profile = forms.ImageField(label='Profile Image:', required=False)
+
     class Meta:
         model = User
-        fields = ['name', 'username', 'password1', 'password2', 'profile']
+        fields = ['name', 'username', 'password1', 'password2', ]
 
 class UserLogin(AuthenticationForm):
     class Meta:
@@ -14,9 +16,11 @@ class UserLogin(AuthenticationForm):
         fields = ('email', 'password')
 
 class EditProfile(forms.ModelForm):
+    profile = forms.ImageField(label='Profile Image:', required=False)
+
     class Meta:
         model = User
-        fields = ['name', 'profile']
+        fields = ['name',]
 
 class SendTicket(forms.ModelForm):
     class Meta:

@@ -3,16 +3,24 @@ from .forms import UserSignup, UserLogin, EditProfile, SendTicket
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from apps.notes.models import Note
+from .utils import Firebase
+
+# Firebase
+firebase = Firebase()
 
 def signup_user(request):
     form = UserSignup()
+
     if request.method == 'POST':
         form = UserSignup(request.POST, request.FILES)
         if form.is_valid():
+            if request.FILES.get('profile', False):
+                image_url = firebase.profile_method(request)
+                form.instance.profile = image_url
+
             form.save()
             login(request, form.instance)
-            return redirect('NotesPage')
-
+            return redirect('DashboardPage')
     context = {'form': form}
     return render(request, 'users/signup.html', context)
 
@@ -46,6 +54,10 @@ def edit_profile(request):
     if request.method == 'POST':
         form = EditProfile(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
+            if request.FILES.get('profile', False):
+                image_url = firebase.profile_method(request)
+                form.instance.profile = image_url
+
             form.save()
             return redirect('DashboardPage')
 

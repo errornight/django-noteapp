@@ -11,7 +11,11 @@
 {% block content %}
     <div class="container">
         <h3> Hello {{ user.name }} </h3>
-        <img src="{{ user.profile.url }}" width="200px" height="200px">
+        {% if user.profile  %}
+        <img src="{{ user.profile }}" width="200px" height="200px">
+        {% else %}
+        <h6> You do not have any profile Image! Got to edit and add one. </h6>
+        {% endif %}
         <h4> Username: @{{ user }} </h4>
 
     {% for note in notes %}
